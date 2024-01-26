@@ -49,7 +49,7 @@ module ReverseProxy
       source_request = Rack::Request.new(env)
 
       # We can pass in a custom path
-      uri = Addressable::URI.parse("#{url}#{options[:path] || env['ORIGINAL_FULLPATH']}")
+      uri = URI.parse("#{url}#{options[:path] || env['ORIGINAL_FULLPATH']}")
 
       # Define headers
       target_request_headers = extract_http_request_headers(source_request.env).merge(options[:headers])
